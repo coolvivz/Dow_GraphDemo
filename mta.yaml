@@ -1,0 +1,36 @@
+ID: Dow_Demo
+_schema-version: '2.0'
+description: Demo Project for Dow
+version: 0.0.1
+
+modules:
+ - name: db
+   type: hdb
+   path: db
+   requires:
+    - name: hdi_db
+      properties:
+        TARGET_CONTAINER: ~{hdi-container-name}
+
+
+
+    - name: Graph_Demo
+      group: SERVICE_REPLACEMENTS
+
+      properties:
+        key: ServiceName_1
+        service: ~{the-service-name}
+                          
+
+
+resources:
+ - name: hdi_db
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
+
+ - name: Graph_Demo
+   properties:
+      the-service-name: ${service-name}
+   type: org.cloudfoundry.existing-service
+

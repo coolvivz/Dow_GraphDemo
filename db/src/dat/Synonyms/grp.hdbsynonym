@@ -1,0 +1,16 @@
+{
+  "NODES": {
+    "target": {
+      "object": "NODES",
+      "schema": "DOW_NEW",
+      "database": "HDB"
+    }
+  },
+  "EDGES": {
+    "target": {
+      "object": "EDGES",
+      "schema": "DOW_NEW",
+      "database": "HDB"
+    }
+  }
+}

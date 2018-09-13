@@ -1,0 +1,37 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "grph.EDGES",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "EDGES.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID",
+                    "SOURCE",
+					"TARGET"
+                ]
+            }
+        },
+        {
+            "target_table": "grph.NODES",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "NODES.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "ID",
+                    "TYPE"
+					
+                ]
+            }
+        }
+        
+        
+    ]
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:graph="http://www.sap.com/ndb/DataModelGraph.ecore" id="cv_graph_pattern" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="cv_graph_pattern"/>
+<localVariables/>
+<variableMappings/>
+<dataSources/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:GraphView" id="Graph_1" workspace="dowdata" action="PATTERN_MATCHING">
+    <viewAttributes>
+      <viewAttribute datatype="NVARCHAR" length="5000" id="ID">
+        <descriptions defaultDescription="ID"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <patternMatching>
+      <vertexVariable name="Plant"/>
+      <vertexVariable name="SalesOrg"/>
+      <edgeVariable name="E1" sourceVariable="Plant" targetVariable="SalesOrg"/>
+      <mapping variable="Plant" element="ID" target="ID"/>
+      <operation xsi:type="graph:CompoundOperation" operator="AND">
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="SalesOrg" element="ID"/>
+          </argument>
+          <argument>
+            <constant value="SalesOrg:A740" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+        <operation xsi:type="graph:PredicateOperation" operator="EQ">
+          <argument>
+            <variableElement variable="E1" element="TARGET"/>
+          </argument>
+          <argument>
+            <constant value="SalesOrg:A740" datatype="NVARCHAR"/>
+          </argument>
+        </operation>
+      </operation>
+    </patternMatching>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Graph_1">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Graph_1" columnName="ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Graph_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="228"/>
+      <rectangleSize height="30" width="174"/>
+    </shape>
+    <shape modelObjectName="dowdata" modelObjectNameSpace="Graph_1" modelObjectType="VertexVariable">
+      <upperLeftCorner name="Plant" x="37" y="22"/>
+      <upperLeftCorner name="SalesOrg" x="155" y="22"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
